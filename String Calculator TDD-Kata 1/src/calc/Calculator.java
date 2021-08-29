@@ -1,5 +1,6 @@
 package calc;
 
+import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,14 +15,22 @@ public class Calculator {
 			String[] n = tokenizing(s);
 			int len = n.length;
 			int[] num = new int[len];
+			Vector negn = new Vector();
 			
 			int sum = 0;
 			
 			for(int i = 0; i<len; i++)
 			{
 				num[i] = Integer.parseInt(n[i]);
+				if(num[i] < 0)
+					negn.add(num[i]);
+//					throw new RuntimeException("Negative numbers are not allowed: " + num[i]);
+				
 				sum += num[i];
 			}
+			
+			if(negn.size() > 0)
+				throw new RuntimeException("Negative numbers are not allowed: " + negn);
 			
 			return sum;
 		}		
@@ -55,4 +64,5 @@ public class Calculator {
 		String num = mt.group(2);
 		return num.split(del);
 	}
+	
 }
