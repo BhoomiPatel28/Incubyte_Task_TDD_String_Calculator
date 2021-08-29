@@ -36,4 +36,10 @@ class CalculatorTest {
 		assertEquals(12, Calculator.add("2\n4,6"));
 	}
 	
+	@Test
+	public void accept_custom_delimeter()
+	{
+		assertEquals(8, Calculator.add("//;\n4;4"));
+	}
+	
 }
