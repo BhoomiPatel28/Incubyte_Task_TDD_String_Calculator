@@ -7,3 +7,6 @@ Task - 2 : It accepts the multiple numbers and return their sum.
 Task - 3 : It accpets the new line '\n' as delimeter along with ';' and return the sum of numbers.
 
 Task - 4 : It accepts the custom delimeters and return the sum of numbers.
+
+Task - 5 : It throws an exception when negative numbers are entered.
+
