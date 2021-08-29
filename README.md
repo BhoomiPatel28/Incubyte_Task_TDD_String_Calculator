@@ -8,5 +8,5 @@ Task - 3 : It accpets the new line '\n' as delimeter along with ';' and return t
 
 Task - 4 : It accepts the custom delimeters and return the sum of numbers.
 
-Task - 5 : It throws an exception when negative numbers are entered.
+Task - 5 : It throws an exception when negative numbers are entered. If more than 1 variables are negatives, shown all them into the exceptions.
 
