@@ -42,4 +42,18 @@ class CalculatorTest {
 		assertEquals(8, Calculator.add("//;\n4;4"));
 	}
 	
+	@Test
+	public void raiseExceptionOnNegativeNumbers()
+	{
+		try {
+			Calculator.add("1,-2,-3");
+			fail("Exception is expected.");
+		}
+		
+		catch(RuntimeException e)
+		{
+			assertEquals("Negative numbers are not allowed: [-2, -3]", e.getMessage());
+		}
+	}
+	
 }
