@@ -10,9 +10,19 @@ public class Calculator {
 		else if(s.contains(","))
 		{
 			String[] n = s.split(",");
-			return Integer.parseInt(n[0]) + Integer.parseInt(n[1]); 
-		}
-		
+			int len = n.length;
+			int[] num = new int[len];
+			
+			int sum = 0;
+			
+			for(int i = 0; i<len; i++)
+			{
+				num[i] = Integer.parseInt(n[i]);
+				sum += num[i];
+			}
+			
+			return sum;
+		}		
 		else
 			return Integer.parseInt(s);
 	}

@@ -24,4 +24,9 @@ class CalculatorTest {
 		assertEquals(5, Calculator.add("3,2"));
 	}
 
+	@Test
+	public void sum_of_more_numbers()
+	{
+		assertEquals(16, Calculator.add("1,3,5,7"));
+	}
 }
