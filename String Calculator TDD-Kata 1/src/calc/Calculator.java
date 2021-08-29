@@ -9,7 +9,7 @@ public class Calculator {
 		
 		else if(s.contains(","))
 		{
-			String[] n = s.split(",");
+			String[] n = s.split(",|\n");
 			int len = n.length;
 			int[] num = new int[len];
 			

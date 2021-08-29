@@ -29,4 +29,11 @@ class CalculatorTest {
 	{
 		assertEquals(16, Calculator.add("1,3,5,7"));
 	}
+	
+	@Test
+	public void new_line_as_delimeter()
+	{
+		assertEquals(12, Calculator.add("2\n4,6"));
+	}
+	
 }
