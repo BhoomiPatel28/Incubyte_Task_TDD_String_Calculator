@@ -56,4 +56,16 @@ class CalculatorTest {
 		}
 	}
 	
+	@Test
+	public void ignore_greater_than_1000_numbers()
+	{
+		assertEquals(4, Calculator.add("4,3000"));
+	}
+	
+	@Test
+	public void accept_any_lenght_delimeter()
+	{
+		assertEquals(6, Calculator.add("//[***]\n1***2***3"));
+	}
+	
 }
