@@ -14,19 +14,33 @@ public class Calculator {
 		{
 			String[] n = tokenizing(s);
 			int len = n.length;
-			int[] num = new int[len];
-			Vector negn = new Vector();
+			Vector<Integer> negn = new Vector<>();
+			Vector<Integer> num = new Vector<>();
 			
+			int neg = 0;
 			int sum = 0;
+			int c = 0;
+			
+			String temp = "";
 			
 			for(int i = 0; i<len; i++)
 			{
-				num[i] = Integer.parseInt(n[i]);
-				if(num[i] < 0)
-					negn.add(num[i]);
-//					throw new RuntimeException("Negative numbers are not allowed: " + num[i]);
-				
-				sum += num[i];
+				Matcher mx = Pattern.compile("^(\\+|-)?\\d+$").matcher(n[i]);
+				while(mx.find())
+				{	
+					temp = mx.group();
+					c = Integer.parseInt(temp);
+					
+					if(c<0)
+					{
+						negn.add(c);
+					}
+					if(c>1000)
+						c=0;
+						
+					num.add(c);
+					sum +=c;
+				 }
 			}
 			
 			if(negn.size() > 0)
@@ -38,17 +52,19 @@ public class Calculator {
 	
 	private static String[] tokenizing(String s)
 	{
-		if(delimeter_custom(s))
-			return split_delimeter_custome(s);
-		
+		if(s.startsWith("//"))
+		{
+			if(s.startsWith("//["))
+				return any_length_delimeter(s);
+			else
+				return split_delimeter_custom(s);	
+		}
 		else
-			return split_delimeter_newline_comma(s);
+		{
+			return split_delimeter_newline_comma(s);	
+		}
 	}
 	
-	private static boolean delimeter_custom(String s)
-	{
-		return s.startsWith("//");
-	}
 	
 	private static String[] split_delimeter_newline_comma(String s)
 	{
@@ -56,9 +72,18 @@ public class Calculator {
 		return n;
 	}
 	
-	private static String[] split_delimeter_custome(String s)
+	private static String[] split_delimeter_custom(String s)
 	{
 		Matcher mt = Pattern.compile("//(.)\n(.*)").matcher(s);
+		mt.matches();
+		String del = mt.group(1);
+		String num = mt.group(2);
+		return num.split(del);
+	}
+	
+	private static String[] any_length_delimeter(String s)
+	{
+		Matcher mt = Pattern.compile("//(\\[.+\\])\n(.*)").matcher(s);
 		mt.matches();
 		String del = mt.group(1);
 		String num = mt.group(2);
